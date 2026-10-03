@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>PlaNxt – Plan it. Live it. Relive it.</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#2E3526;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+body{margin:0;height:100%;background:var(--bg);font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;overflow:hidden}
+a{color:#EAD9BF}a:hover{color:#FBF3DA}
+#viewport{position:relative;width:100%;height:100%}
+#stage{position:absolute;left:50%;top:50%;width:1280px;height:800px;transform-origin:center center;box-shadow:0 20px 60px rgba(0,0,0,.35);border-radius:14px;overflow:hidden}
+.screen{display:none;width:1280px;height:800px}
+.screen.active{display:block;animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.num{height:72px;border-radius:16px;font-family:inherit;font-size:26px;font-weight:700;cursor:pointer;pointer-events:auto;background:transparent;color:#FBF3DA;border:2px solid #5D6851}
+.num[aria-pressed="true"]{background:#EAD9BF;color:#3D4632;border-color:#EAD9BF}
+@media (prefers-reduced-motion:reduce){.screen.active{animation:none}}
+.cta-glow{animation:glow 2.2s ease-in-out infinite;transition:transform .2s}
+a:hover .cta-glow{transform:translateY(-2px) scale(1.03)}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(226,203,168,.55),0 10px 30px rgba(0,0,0,.25)}50%{box-shadow:0 0 0 14px rgba(226,203,168,0),0 10px 30px rgba(0,0,0,.25)}}
+@media (prefers-reduced-motion:reduce){.cta-glow{animation:none}}
+</style>
+</head>
+<body>
+<div id="viewport"><div id="stage">
+<section class="screen" id="Main" aria-label="Main">
+<div style="width: 1280px; height: 800px; display: flex; background: #3D4632; color: #FBF3DA; font-family: 'DM Sans', system-ui, sans-serif; overflow: hidden">
+  <aside style="width: 260px; flex-shrink: 0; background: #323A29; border-right: 1px solid #55604A; padding: 32px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px">
+    <div style="display: flex; flex-direction: column; gap: 6px">
+      <div style="font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 30px; font-weight: 700; letter-spacing: -0.5px">Pla<span style="color: #F08A7E">Nxt</span></div>
+      <div style="font-size: 12px; color: #CBCDB8; letter-spacing: 1.5px; text-transform: uppercase">Plan it · Live it · Relive it</div>
+    </div>
+    <nav aria-label="Your trips" style="display: flex; flex-direction: column; gap: 10px">
+      <div style="font-size: 12px; color: #DFCBAA; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px">Your trips</div>
+      <a href="#Role" style="display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 12px; border: 1px dashed #DFCBAA; color: #EAD9BF; text-decoration: none; font-size: 15px; font-weight: 500">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M8 2v12M2 8h12"></path></svg>
+        New trip
+      </a>
+      <div style="padding: 12px 14px; border-radius: 12px; background: #4A5440; display: flex; flex-direction: column; gap: 4px">
+        <div style="font-size: 15px; font-weight: 500">Mumbai trip</div>
+        <div style="font-size: 13px; color: #CBCDB8">12–17 Oct · from Jaipur</div>
+      </div>
+      <div style="padding: 12px 14px; border-radius: 12px; display: flex; flex-direction: column; gap: 4px">
+        <div style="font-size: 15px; font-weight: 500">Goa, finally</div>
+        <div style="font-size: 13px; color: #CBCDB8">December · planning</div>
+      </div>
+      <div style="padding: 12px 14px; border-radius: 12px; display: flex; flex-direction: column; gap: 4px">
+        <div style="font-size: 15px; font-weight: 500">Jaipur with cousins</div>
+        <div style="font-size: 13px; color: #CBCDB8">Completed · dues settled</div>
+      </div>
+    </nav>
+    <div style="margin-top: auto; font-size: 13px; color: #CBCDB8; line-height: 1.5">Plan on the web.<br>Travel on WhatsApp.</div>
+  </aside>
+  <main style="flex-grow: 1; display: flex; flex-direction: column; padding: 32px 56px; box-sizing: border-box">
+    <header style="display: flex; justify-content: flex-end; align-items: center; gap: 20px">
+      <a href="#Role" style="color: #FBF3DA; text-decoration: none; font-size: 15px; font-weight: 500">Log in</a>
+      <a href="#Role" style="background: #E2CBA8; color: #3D4632; padding: 13px 24px; border-radius: 999px; font-weight: 700; text-decoration: none; font-size: 15px">Sign up free</a>
+    </header>
+    <a href="#Role" aria-label="Plan our group trip" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; gap: 24px; text-decoration: none; color: #FBF3DA; position: relative">
+      <svg width="240" height="195" viewBox="0 0 320 260" fill="none" aria-hidden="true" style="position: absolute; right: -8px; bottom: 8px">
+        <path d="M20 230 C 90 220, 70 140, 150 130 S 250 120, 240 40" stroke="#DFCBAA" stroke-width="2.5" stroke-dasharray="2 10" stroke-linecap="round"></path>
+        <circle cx="20" cy="230" r="9" fill="#3D4632" stroke="#EAD9BF" stroke-width="2.5"></circle>
+        <circle cx="150" cy="130" r="9" fill="#3D4632" stroke="#EAD9BF" stroke-width="2.5"></circle>
+        <path d="M240 14c-12 0-20 9-20 20 0 15 20 34 20 34s20-19 20-34c0-11-8-20-20-20z" fill="#F08A7E"></path>
+        <circle cx="240" cy="34" r="7" fill="#3D4632"></circle>
+      </svg>
+      <div style="font-size: 14px; color: #DFCBAA; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 500">The AI trip planner for your whole group</div>
+      <h1 style="margin: 0; font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 88px; line-height: 0.95; font-weight: 700; letter-spacing: -2.5px">Welcome to your<br><span style="color: #F08A7E">NXT</span> holiday</h1>
+      <p style="margin: 0; font-size: 20px; color: #CBCDB8; max-width: 540px; line-height: 1.5">Your group chat says "let's go somewhere". PlaNxt actually gets you there: one agent that hears everyone, plans the trip, splits the money and stays with you till you're home.</p>
+      <div style="display: flex; align-items: center; gap: 22px; margin-top: 6px">
+        <span class="cta-glow" style="display: inline-flex; align-items: center; gap: 12px; background: #E2CBA8; color: #2C3324; padding: 20px 32px; border-radius: 999px; font-size: 20px; font-weight: 700; font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif">
+          Plan our trip
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11h14M12 5l6 6-6 6"></path></svg>
+        </span>
+      </div>
+    </a>
+    <a href="#Dual" style="margin-top: 8px; display: flex; align-items: center; gap: 18px; max-width: 640px; padding: 16px 20px; border-radius: 18px; background: #4A5440; border: 1px solid #5D6851; text-decoration: none; color: #FBF3DA">
+      <span style="flex-shrink: 0; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #3D4632; background: #F08A7E; padding: 6px 10px; border-radius: 999px">Sneak peek</span>
+      <span style="display: flex; flex-direction: column; gap: 3px">
+        <span style="font-size: 16px; font-weight: 700">See PlaNxt plan a real Mumbai trip</span>
+        <span style="font-size: 14px; color: #CBCDB8">Voice notes in Punjabi, Marathi, Hindi and English, turned into one plan</span>
+      </span>
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#E2CBA8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left: auto; flex-shrink: 0"><path d="M4 11h14M12 5l6 6-6 6"></path></svg>
+    </a>
+  </main>
+</div>
+</section>
+<section class="screen" id="Role" aria-label="Role">
+<div style="width: 1280px; height: 800px; box-sizing: border-box; padding: 32px 56px 48px; display: flex; flex-direction: column; background: #3D4632; color: #FBF3DA; font-family: 'DM Sans', system-ui, sans-serif; overflow: hidden; position: relative; isolation: isolate">
+  <a href="#TripType" aria-label="Click anywhere to continue" style="position: absolute; inset: 0; z-index: -1"></a>
+  <div style="display: contents; pointer-events: none">
+  <header style="display: flex; justify-content: space-between; align-items: center">
+    <a href="#Main" style="pointer-events: auto; font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 26px; font-weight: 700; color: #FBF3DA; text-decoration: none">Pla<span style="color: #F08A7E">Nxt</span></a>
+    <div style="display: flex; align-items: center; gap: 14px; font-size: 14px; color: #CBCDB8">
+      <span>Step 1 of 3</span>
+      <div style="display: flex; gap: 6px">
+        <span style="display: block; width: 32px; height: 6px; border-radius: 3px; background: #E2CBA8"></span>
+        <span style="display: block; width: 32px; height: 6px; border-radius: 3px; background: #5D6851"></span>
+        <span style="display: block; width: 32px; height: 6px; border-radius: 3px; background: #5D6851"></span>
+      </div>
+    </div>
+  </header>
+  <div style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 48px">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center">
+      <h1 style="margin: 0; font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 60px; font-weight: 700; letter-spacing: -1.5px">Select your role</h1>
+      <p style="margin: 0; font-size: 19px; color: #CBCDB8">How would you like to plan this trip?</p>
+    </div>
+    <div style="display: flex; gap: 32px">
+      <a href="#TripType" style="pointer-events: auto; width: 400px; box-sizing: border-box; padding: 40px 36px; border-radius: 24px; background: #4A5440; border: 1px solid #5D6851; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; text-decoration: none; color: #FBF3DA">
+        <div style="width: 132px; height: 132px; border-radius: 50%; background: #3D4632; border: 2px solid #DFCBAA; display: flex; align-items: center; justify-content: center">
+          <svg width="72" height="72" viewBox="0 0 96 96" fill="none" stroke="#EAD9BF" stroke-width="4" stroke-linecap="round" aria-hidden="true">
+            <circle cx="48" cy="30" r="15"></circle>
+            <path d="M20 84c0-17 12-30 28-30s28 13 28 30"></path>
+            <path d="M68 22l6-6M74 30h8M68 38l6 6" stroke="#E2CBA8"></path>
+          </svg>
+        </div>
+        <div style="font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 30px; font-weight: 700">Travel Agent</div>
+        <div style="font-size: 17px; color: #CBCDB8; line-height: 1.5">Hand it over. PlaNxt plans the whole trip and checks with you before anything is booked or paid.</div>
+        <div style="margin-top: 6px; font-size: 15px; font-weight: 700; color: #E2CBA8">Choose →</div>
+      </a>
+      <a href="#TripType" style="pointer-events: auto; width: 400px; box-sizing: border-box; padding: 40px 36px; border-radius: 24px; background: #4A5440; border: 1px solid #5D6851; display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; text-decoration: none; color: #FBF3DA">
+        <div style="width: 132px; height: 132px; border-radius: 50%; background: #3D4632; border: 2px solid #DFCBAA; display: flex; align-items: center; justify-content: center">
+          <svg width="96" height="64" viewBox="0 0 144 96" fill="none" stroke="#EAD9BF" stroke-width="4" stroke-linecap="round" aria-hidden="true">
+            <circle cx="36" cy="34" r="11"></circle>
+            <path d="M14 84c0-14 9-24 22-24s22 10 22 24"></path>
+            <circle cx="108" cy="34" r="11"></circle>
+            <path d="M86 84c0-14 9-24 22-24s22 10 22 24"></path>
+            <circle cx="72" cy="26" r="13" stroke="#E2CBA8"></circle>
+            <path d="M46 84c0-17 11-29 26-29s26 12 26 29" stroke="#E2CBA8"></path>
+          </svg>
+        </div>
+        <div style="font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 30px; font-weight: 700">Self-organised</div>
+        <div style="font-size: 17px; color: #CBCDB8; line-height: 1.5">Plan it together. Your group decides, and PlaNxt gathers everyone's preferences and keeps it all in sync.</div>
+        <div style="margin-top: 6px; font-size: 15px; font-weight: 700; color: #E2CBA8">Choose →</div>
+      </a>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: center">
+    <a href="#Main" style="pointer-events: auto; font-size: 15px; color: #CBCDB8; text-decoration: none">← Back</a>
+    <div style="display: flex; align-items: center; gap: 10px; font-size: 15px; color: #EAD9BF; font-weight: 500"><span style="display: block; width: 8px; height: 8px; border-radius: 50%; background: #F08A7E; box-shadow: 0 0 0 5px rgba(240,138,126,0.25)"></span>Click anywhere to continue →</div>
+  </div>
+  </div>
+</div>
+</section>
+<section class="screen" id="TripType" aria-label="TripType">
+<div style="width: 1280px; height: 800px; box-sizing: border-box; padding: 32px 56px 48px; display: flex; flex-direction: column; background: #3D4632; color: #FBF3DA; font-family: 'DM Sans', system-ui, sans-serif; overflow: hidden; position: relative; isolation: isolate">
+  <a href="#People" aria-label="Click anywhere to continue" style="position: absolute; inset: 0; z-index: -1"></a>
+  <div style="display: contents; pointer-events: none">
+  <header style="display: flex; justify-content: space-between; align-items: center">
+    <a href="#Main" style="pointer-events: auto; font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 26px; font-weight: 700; color: #FBF3DA; text-decoration: none">Pla<span style="color: #F08A7E">Nxt</span></a>
+    <div style="display: flex; align-items: center; gap: 14px; font-size: 14px; color: #CBCDB8">
+      <span>Step 2 of 3</span>
+      <div style="display: flex; gap: 6px">
+        <span style="display: block; width: 32px; height: 6px; border-radius: 3px; background: #E2CBA8"></span>
+        <span style="display: block; width: 32px; height: 6px; border-radius: 3px; background: #E2CBA8"></span>
+        <span style="display: block; width: 32px; height: 6px; border-radius: 3px; background: #5D6851"></span>
+      </div>
+    </div>
+  </header>
+  <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; gap: 44px; max-width: 880px; width: 100%; align-self: center">
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <h1 style="margin: 0; font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 60px; font-weight: 700; letter-spacing: -1.5px">What kind of trip is it?</h1>
+      <p style="margin: 0; font-size: 19px; color: #CBCDB8">This helps PlaNxt plan routes and stays the right way.</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 20px">
+      <a href="#People" style="pointer-events: auto; display: flex; align-items: center; gap: 28px; padding: 28px 32px; border-radius: 22px; background: #4A5440; border: 1px solid #5D6851; text-decoration: none; color: #FBF3DA">
+        <div style="width: 88px; height: 88px; flex-shrink: 0; border-radius: 20px; background: #3D4632; display: flex; align-items: center; justify-content: center">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M24 6c-8 0-14 6-14 14 0 10 14 22 14 22s14-12 14-22c0-8-6-14-14-14z" stroke="#E2CBA8" stroke-width="3"></path>
+            <circle cx="24" cy="20" r="5" stroke="#EAD9BF" stroke-width="3"></circle>
+          </svg>
+        </div>
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 6px">
+          <div style="font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 30px; font-weight: 700">Single city</div>
+          <div style="font-size: 17px; color: #CBCDB8">One base, with day trips and plans around it.</div>
+        </div>
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#E2CBA8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h16M15 7l7 7-7 7"></path></svg>
+      </a>
+      <a href="#People" style="pointer-events: auto; display: flex; align-items: center; gap: 28px; padding: 28px 32px; border-radius: 22px; background: #4A5440; border: 1px solid #5D6851; text-decoration: none; color: #FBF3DA">
+        <div style="width: 88px; height: 88px; flex-shrink: 0; border-radius: 20px; background: #3D4632; display: flex; align-items: center; justify-content: center">
+          <svg width="56" height="48" viewBox="0 0 56 48" fill="none" aria-hidden="true">
+            <path d="M10 36 C 18 20, 30 34, 28 22 S 40 10, 46 12" stroke="#DFCBAA" stroke-width="2.5" stroke-dasharray="2 6" stroke-linecap="round"></path>
+            <circle cx="10" cy="36" r="5" stroke="#EAD9BF" stroke-width="3"></circle>
+            <circle cx="28" cy="22" r="5" stroke="#EAD9BF" stroke-width="3"></circle>
+            <circle cx="46" cy="12" r="5" stroke="#E2CBA8" stroke-width="3"></circle>
+          </svg>
+        </div>
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 6px">
+          <div style="font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 30px; font-weight: 700">Multi-city</div>
+          <div style="font-size: 17px; color: #CBCDB8">Hopping between places, with travel days planned in.</div>
+        </div>
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#E2CBA8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14h16M15 7l7 7-7 7"></path></svg>
+      </a>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: center">
+    <a href="#Role" style="pointer-events: auto; font-size: 15px; color: #CBCDB8; text-decoration: none">← Back</a>
+    <div style="display: flex; align-items: center; gap: 10px; font-size: 15px; color: #EAD9BF; font-weight: 500"><span style="display: block; width: 8px; height: 8px; border-radius: 50%; background: #F08A7E; box-shadow: 0 0 0 5px rgba(240,138,126,0.25)"></span>Click anywhere to continue →</div>
+  </div>
+  </div>
+</div>
+</section>
+<section class="screen" id="People" aria-label="People">
+<div style="width: 1280px; height: 800px; box-sizing: border-box; padding: 32px 56px 48px; display: flex; flex-direction: column; background: #3D4632; color: #FBF3DA; font-family: 'DM Sans', system-ui, sans-serif; overflow: hidden; position: relative; isolation: isolate">
+  <a href="#Dual" aria-label="Click anywhere to continue" style="position: absolute; inset: 0; z-index: -1"></a>
+  <div style="display: contents; pointer-events: none">
+  <header style="display: flex; justify-content: space-between; align-items: center">
+    <a href="#Main" style="pointer-events: auto; font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 26px; font-weight: 700; color: #FBF3DA; text-decoration: none">Pla<span style="color: #F08A7E">Nxt</span></a>
+    <div style="display: flex; align-items: center; gap: 14px; font-size: 14px; color: #CBCDB8">
+      <span>Step 3 of 3</span>
+      <div style="display: flex; gap: 6px">
+        <span style="display: block; width: 32px; height: 6px; border-radius: 3px; background: #E2CBA8"></span>
+        <span style="display: block; width: 32px; height: 6px; border-radius: 3px; background: #E2CBA8"></span>
+        <span style="display: block; width: 32px; height: 6px; border-radius: 3px; background: #E2CBA8"></span>
+      </div>
+    </div>
+  </header>
+  <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; gap: 40px; max-width: 920px; width: 100%; align-self: center">
+    <div style="display: flex; flex-direction: column; gap: 22px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline">
+        <h1 style="margin: 0; font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 48px; font-weight: 700; letter-spacing: -1px">How many people are going?</h1>
+        <div style="font-size: 18px; color: #EAD9BF; font-weight: 500"><span id="ppl-summary">4 travellers</span></div>
+      </div>
+      <div role="group" aria-label="Number of people" style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 12px">
+                  <button type="button" class="num" data-n="1" aria-pressed="false">1</button>
+          <button type="button" class="num" data-n="2" aria-pressed="false">2</button>
+          <button type="button" class="num" data-n="3" aria-pressed="false">3</button>
+          <button type="button" class="num" data-n="4" aria-pressed="true">4</button>
+          <button type="button" class="num" data-n="5" aria-pressed="false">5</button>
+          <button type="button" class="num" data-n="6" aria-pressed="false">6</button>
+          <button type="button" class="num" data-n="7" aria-pressed="false">7</button>
+          <button type="button" class="num" data-n="8" aria-pressed="false">8</button>
+      </div>
+      <div style="font-size: 15px; color: #CBCDB8">WhatsApp trip groups hold up to 8 people, so PlaNxt plans for groups of 1 to 8.</div>
+    </div>
+    <div style="height: 1px; background: #5D6851"></div>
+    <div style="display: flex; flex-direction: column; gap: 22px">
+      <h2 style="margin: 0; font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 36px; font-weight: 700; letter-spacing: -0.5px">Would you like to activate WhatsApp planning?</h2>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px">
+        <a href="#Dual" style="pointer-events: auto; padding: 24px 28px; border-radius: 20px; background: #E2CBA8; color: #3D4632; text-decoration: none; display: flex; flex-direction: column; gap: 8px">
+          <div style="font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 28px; font-weight: 700">Yes, turn it on</div>
+          <div style="font-size: 16px; line-height: 1.45">PlaNxt creates a WhatsApp trip group. You share the invite link with your friends.</div>
+        </a>
+        <a href="#Web" style="pointer-events: auto; padding: 24px 28px; border-radius: 20px; background: #4A5440; border: 1px solid #5D6851; color: #FBF3DA; text-decoration: none; display: flex; flex-direction: column; gap: 8px">
+          <div style="font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 28px; font-weight: 700">No, plan on the website</div>
+          <div style="font-size: 16px; line-height: 1.45; color: #CBCDB8">Plan everything here. You can switch WhatsApp on any time, even mid-trip.</div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: center">
+    <a href="#TripType" style="pointer-events: auto; font-size: 15px; color: #CBCDB8; text-decoration: none">← Back</a>
+    <div style="display: flex; align-items: center; gap: 10px; font-size: 15px; color: #EAD9BF; font-weight: 500"><span style="display: block; width: 8px; height: 8px; border-radius: 50%; background: #F08A7E; box-shadow: 0 0 0 5px rgba(240,138,126,0.25)"></span>Click anywhere to continue →</div>
+  </div>
+  </div>
+</div>
+</section>
+<section class="screen" id="Dual" aria-label="Dual">
+<div style="width: 1280px; height: 800px; box-sizing: border-box; padding: 24px 40px 28px; display: flex; flex-direction: column; gap: 20px; background: #3D4632; color: #FBF3DA; font-family: 'DM Sans', system-ui, sans-serif; overflow: hidden; position: relative; isolation: isolate">
+  <a href="#Web" aria-label="Click anywhere to see the website-only version" style="position: absolute; inset: 0; z-index: -1"></a>
+  <div style="display: contents; pointer-events: none">
+  <header style="display: flex; justify-content: space-between; align-items: center">
+    <div style="display: flex; align-items: center; gap: 24px">
+      <a href="#Main" style="pointer-events: auto; font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 26px; font-weight: 700; color: #FBF3DA; text-decoration: none">Pla<span style="color: #F08A7E">Nxt</span></a>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="font-size: 17px; font-weight: 700">Mumbai trip</div>
+        <div style="font-size: 13px; color: #CBCDB8">12–17 Oct in Mumbai · From Jaipur · Round trip</div>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px; padding: 9px 16px; border-radius: 999px; background: #4A5440; border: 1px solid #5D6851; font-size: 14px; color: #EAD9BF">
+      <span style="display: block; width: 8px; height: 8px; border-radius: 50%; background: #7FD1A8"></span>
+      Synced with WhatsApp group
+    </div>
+  </header>
+  <div style="flex-grow: 1; display: flex; gap: 24px; min-height: 0">
+    <section aria-label="Website trip room" style="flex-grow: 1; display: flex; flex-direction: column; border-radius: 22px; background: #4A5440; border: 1px solid #5D6851; overflow: hidden">
+      <div style="padding: 14px 22px; border-bottom: 1px solid #5D6851; display: flex; justify-content: space-between; align-items: center">
+        <div style="font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 20px; font-weight: 700">Trip room <span style="font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: #CBCDB8; margin-left: 8px">Website</span></div>
+        <div style="font-size: 13px; color: #CBCDB8">Nayna · Teesta · Asmi · Soham · Prajwal · +2</div>
+      </div>
+      <div style="flex-grow: 1; display: flex; min-height: 0">
+        <div style="flex-grow: 1; padding: 16px 22px; display: flex; flex-direction: column; gap: 11px">
+          <div style="display: flex; gap: 12px; align-items: flex-start">
+            <div style="width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%; background: #5D6851; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 14px">N</div>
+            <div style="display: flex; flex-direction: column; gap: 3px; max-width: 520px">
+              <div style="font-size: 13px; font-weight: 700; ">Nayna <span style="font-weight: 500; color: #7FD1A8; margin-left: 6px">via WhatsApp</span></div>
+              <div style="font-size: 14px; line-height: 1.4; background: #3D4632; padding: 8px 13px; border-radius: 4px 14px 14px 14px">Hiii! We want to plan a trip to Mumbai, 12th to 17th October. Please take our preferences into account and make an itinerary.</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start">
+            <div style="width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%; background: #5D6851; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 14px">T</div>
+            <div style="display: flex; flex-direction: column; gap: 3px; max-width: 520px">
+              <div style="font-size: 13px; font-weight: 700; ">Teesta <span style="font-weight: 500; color: #7FD1A8; margin-left: 6px">via WhatsApp</span></div>
+              <div style="font-size: 14px; line-height: 1.4; background: #3D4632; padding: 8px 13px; border-radius: 4px 14px 14px 14px; font-style: italic; color: #EAD9BF"><span style="font-style: normal">Voice note · 0:31 · </span>transcribed and added to the group profile</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start">
+            <div style="width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%; background: #5D6851; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 14px">A</div>
+            <div style="display: flex; flex-direction: column; gap: 3px; max-width: 520px">
+              <div style="font-size: 13px; font-weight: 700; ">Asmi <span style="font-weight: 500; color: #7FD1A8; margin-left: 6px">via WhatsApp</span></div>
+              <div style="font-size: 14px; line-height: 1.4; background: #3D4632; padding: 8px 13px; border-radius: 4px 14px 14px 14px; font-style: italic; color: #EAD9BF"><span style="font-style: normal">Voice note · 0:27 · </span>transcribed and added to the group profile</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start">
+            <div style="width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%; background: #5D6851; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 14px">S</div>
+            <div style="display: flex; flex-direction: column; gap: 3px; max-width: 520px">
+              <div style="font-size: 13px; font-weight: 700; ">Soham <span style="font-weight: 500; color: #7FD1A8; margin-left: 6px">via WhatsApp</span></div>
+              <div style="font-size: 14px; line-height: 1.4; background: #3D4632; padding: 8px 13px; border-radius: 4px 14px 14px 14px">Guys I think instead of exploring the city we should go to Sanjay Gandhi National Park and touch some grass</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start">
+            <div style="width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%; background: #E2CBA8; color: #3D4632; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 14px">P</div>
+            <div style="display: flex; flex-direction: column; gap: 3px; max-width: 520px">
+              <div style="font-size: 13px; font-weight: 700; color: #E2CBA8">PlaNxt </div>
+              <div style="font-size: 14px; line-height: 1.4; background: #3D4632; padding: 8px 13px; border-radius: 4px 14px 14px 14px">Just wanted to clarify: where are all of you flying from?</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start">
+            <div style="width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%; background: #5D6851; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 14px">N</div>
+            <div style="display: flex; flex-direction: column; gap: 3px; max-width: 520px">
+              <div style="font-size: 13px; font-weight: 700; ">Nayna <span style="font-weight: 500; color: #7FD1A8; margin-left: 6px">via WhatsApp</span></div>
+              <div style="font-size: 14px; line-height: 1.4; background: #3D4632; padding: 8px 13px; border-radius: 4px 14px 14px 14px">We're all coming from Jaipur. Open to any transport that fits the budget.</div>
+            </div>
+          </div>
+          <div style="margin-top: auto; display: flex; gap: 10px">
+            <label for="dualmsg" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Message the group</label>
+            <input id="dualmsg" type="text" placeholder="Message the group…" style="pointer-events: auto; flex-grow: 1; height: 44px; box-sizing: border-box; padding: 0 16px; border-radius: 12px; border: 1px solid #5D6851; background: #3D4632; color: #FBF3DA; font-family: inherit; font-size: 15px">
+            <button type="button" aria-label="Send" style="pointer-events: auto; width: 44px; height: 44px; border-radius: 12px; border: none; background: #E2CBA8; color: #3D4632; display: flex; align-items: center; justify-content: center; cursor: pointer">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5"></path></svg>
+            </button>
+          </div>
+        </div>
+        <aside aria-label="Group profile" style="width: 250px; flex-shrink: 0; border-left: 1px solid #5D6851; padding: 16px 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 13px">
+          <div style="font-size: 12px; color: #DFCBAA; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700">Group profile</div>
+          <div style="display: flex; flex-direction: column; gap: 2px">
+            <div style="font-size: 13px; color: #CBCDB8">Route</div>
+            <div style="font-size: 14px; line-height: 1.35">Jaipur → Mumbai → Jaipur</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 2px">
+            <div style="font-size: 13px; color: #CBCDB8">Dates in Mumbai</div>
+            <div style="font-size: 14px; line-height: 1.35">12–17 Oct · travel days added around them</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 2px">
+            <div style="font-size: 13px; color: #CBCDB8">Transport</div>
+            <div style="font-size: 14px; line-height: 1.35">Any mode that fits the budget</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 2px">
+            <div style="font-size: 13px; color: #CBCDB8">Voice notes understood</div>
+            <div style="font-size: 14px; line-height: 1.35">Punjabi · Marathi · Hindi · English</div>
+          </div>
+          <div style="padding: 11px 13px; border-radius: 12px; background: #3D4632; border: 1px solid #DFCBAA; display: flex; flex-direction: column; gap: 4px">
+            <div style="font-size: 13px; color: #EAD9BF; font-weight: 700">Needs the group's call</div>
+            <div style="font-size: 13.5px; line-height: 1.4">City vs. nature: Soham wants Sanjay Gandhi National Park. PlaNxt will ask everyone before planning around it.</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+    <section aria-label="WhatsApp trip group" style="width: 340px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 10px">
+      <div style="width: 320px; flex-grow: 1; box-sizing: border-box; border-radius: 40px; border: 9px solid #1F241A; background: #EFE7DC; overflow: hidden; display: flex; flex-direction: column">
+        <div style="background: #1F5F55; color: #FFFFFF; padding: 14px 16px; display: flex; align-items: center; gap: 10px">
+          <div style="width: 34px; height: 34px; border-radius: 50%; background: #E2CBA8; color: #3D4632; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0">P</div>
+          <div style="display: flex; flex-direction: column; gap: 1px; min-width: 0">
+            <div style="font-size: 15px; font-weight: 700">PlaNxt's Itinerary MUMBAI</div>
+            <div style="font-size: 12px; color: #DDEBE7; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Asmi, PlaNxt, Prajwal, Soham, Teesta, You</div>
+          </div>
+        </div>
+        <div style="flex-grow: 1; padding: 12px; display: flex; flex-direction: column; gap: 8px; color: #1B1B1B">
+          <div style="align-self: flex-start; max-width: 85%; background: #FFFFFF; padding: 7px 10px; border-radius: 4px 10px 10px 10px; display: flex; flex-direction: column; gap: 2px">
+            <div style="font-size: 12px; font-weight: 700; color: #1F6E8C">Soham</div>
+            <div style="font-size: 12.5px; line-height: 1.4">Guys I think instead of exploring the city we should go to Sanjay Gandhi National Park and touch some grass</div>
+          </div>
+          <div style="align-self: flex-start; max-width: 85%; background: #FFFFFF; padding: 7px 10px; border-radius: 4px 10px 10px 10px; display: flex; flex-direction: column; gap: 2px">
+            <div style="font-size: 12px; font-weight: 700; color: #8A5A2B">PlaNxt</div>
+            <div style="font-size: 12.5px; line-height: 1.4">Just wanted to clarify: where are all of you flying from?</div>
+          </div>
+          <div style="align-self: flex-end; max-width: 85%; background: #D9F2C4; padding: 7px 10px; border-radius: 10px 4px 10px 10px; font-size: 12.5px; line-height: 1.4">We're all coming from Jaipur, open to all means of transport to fit the budget</div>
+          <div style="align-self: flex-start; max-width: 85%; background: #FFFFFF; padding: 7px 10px; border-radius: 4px 10px 10px 10px; display: flex; flex-direction: column; gap: 2px">
+            <div style="font-size: 12px; font-weight: 700; color: #8A5A2B">PlaNxt</div>
+            <div style="font-size: 12.5px; line-height: 1.4">Would you like me to plan round-trip travel? And do the dates include the travel times?</div>
+          </div>
+          <div style="align-self: flex-end; max-width: 85%; background: #D9F2C4; padding: 7px 10px; border-radius: 10px 4px 10px 10px; font-size: 12.5px; line-height: 1.4">Yes, round trip! The dates don't include travel. We want to maximise our time in Mumbai!</div>
+        </div>
+        <div style="padding: 8px 10px; display: flex; gap: 8px; align-items: center; background: #EFE7DC">
+          <div style="flex-grow: 1; height: 38px; border-radius: 19px; background: #FFFFFF; color: #55625F; font-size: 13px; display: flex; align-items: center; padding: 0 14px">Message</div>
+          <div style="width: 38px; height: 38px; border-radius: 50%; background: #1F5F55; display: flex; align-items: center; justify-content: center">
+            <svg width="16" height="18" viewBox="0 0 16 18" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="1" width="6" height="10" rx="3"></rect><path d="M2 8a6 6 0 0 0 12 0M8 14v3"></path></svg>
+          </div>
+        </div>
+      </div>
+      <div style="font-size: 13px; color: #CBCDB8">The same chat, on everyone's phone</div>
+    </section>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: center">
+    <a href="#People" style="pointer-events: auto; font-size: 15px; color: #CBCDB8; text-decoration: none">← Back</a>
+    <div style="display: flex; align-items: center; gap: 10px; font-size: 15px; color: #EAD9BF; font-weight: 500"><span style="display: block; width: 8px; height: 8px; border-radius: 50%; background: #F08A7E; box-shadow: 0 0 0 5px rgba(240,138,126,0.25)"></span>Click anywhere to see the website-only version →</div>
+  </div>
+  </div>
+</div>
+</section>
+<section class="screen" id="Web" aria-label="Web">
+<div style="width: 1280px; height: 800px; box-sizing: border-box; padding: 24px 40px 28px; display: flex; flex-direction: column; gap: 20px; background: #3D4632; color: #FBF3DA; font-family: 'DM Sans', system-ui, sans-serif; overflow: hidden; position: relative; isolation: isolate">
+  <a href="#Main" aria-label="Click anywhere to start again" style="position: absolute; inset: 0; z-index: -1"></a>
+  <div style="display: contents; pointer-events: none">
+  <header style="display: flex; justify-content: space-between; align-items: center">
+    <div style="display: flex; align-items: center; gap: 24px">
+      <a href="#Main" style="pointer-events: auto; font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 26px; font-weight: 700; color: #FBF3DA; text-decoration: none">Pla<span style="color: #F08A7E">Nxt</span></a>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="font-size: 17px; font-weight: 700">Mumbai trip</div>
+        <div style="font-size: 13px; color: #CBCDB8">12–17 Oct in Mumbai · From Jaipur · Round trip</div>
+      </div>
+    </div>
+    <a href="#Dual" style="pointer-events: auto; display: flex; align-items: center; gap: 10px; padding: 9px 16px; border-radius: 999px; background: #4A5440; border: 1px solid #5D6851; font-size: 14px; color: #EAD9BF; text-decoration: none">
+      <span style="display: block; width: 8px; height: 8px; border-radius: 50%; background: #8C937C"></span>
+      WhatsApp off · Turn on
+    </a>
+  </header>
+  <div style="flex-grow: 1; display: flex; gap: 24px; min-height: 0">
+    <section aria-label="Website trip room" style="flex-grow: 1; display: flex; flex-direction: column; border-radius: 22px; background: #4A5440; border: 1px solid #5D6851; overflow: hidden">
+      <div style="padding: 14px 22px; border-bottom: 1px solid #5D6851; display: flex; justify-content: space-between; align-items: center">
+        <div style="font-family: 'Bricolage Grotesque', 'DM Sans', sans-serif; font-size: 20px; font-weight: 700">Trip room</div>
+        <div style="font-size: 13px; color: #CBCDB8">Nayna · Teesta · Asmi · Soham · Prajwal · +2</div>
+      </div>
+      <div style="flex-grow: 1; padding: 16px 22px; display: flex; flex-direction: column; gap: 12px">
+          <div style="display: flex; gap: 12px; align-items: flex-start">
+            <div style="width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%; background: #E2CBA8; color: #3D4632; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 14px">P</div>
+            <div style="display: flex; flex-direction: column; gap: 3px; max-width: 520px">
+              <div style="font-size: 13px; font-weight: 700; color: #E2CBA8">PlaNxt </div>
+              <div style="font-size: 14px; line-height: 1.4; background: #3D4632; padding: 8px 13px; border-radius: 4px 14px 14px 14px">Everyone's preferences are in, including your voice notes in Punjabi, Marathi, Hindi and English. Two ways to get from Jaipur to Mumbai and back within budget are on the right. Vote, and I'll book only once you all agree.</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start">
+            <div style="width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%; background: #5D6851; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 14px">S</div>
+            <div style="display: flex; flex-direction: column; gap: 3px; max-width: 520px">
+              <div style="font-size: 13px; font-weight: 700; ">Soham </div>
+              <div style="font-size: 14px; line-height: 1.4; background: #3D4632; padding: 8px 13px; border-radius: 4px 14px 14px 14px">Can we still fit in Sanjay Gandhi National Park?</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start">
+            <div style="width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%; background: #E2CBA8; color: #3D4632; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 14px">P</div>
+            <div style="display: flex; flex-direction: column; gap: 3px; max-width: 520px">
+              <div style="font-size: 13px; font-weight: 700; color: #E2CBA8">PlaNxt </div>
+              <div style="font-size: 14px; line-height: 1.4; background: #3D4632; padding: 8px 13px; border-radius: 4px 14px 14px 14px">Most of you were up for it, so I've kept one day for the park. It's about [X] minutes from the area you're leaning towards, based on route data.</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start">
+            <div style="width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%; background: #5D6851; font-weight: 700; display: flex; align-items: center; justify-content: center; font-size: 14px">T</div>
+            <div style="display: flex; flex-direction: column; gap: 3px; max-width: 520px">
+              <div style="font-size: 13px; font-weight: 700; ">Teesta </div>
+              <div style="font-size: 14px; line-height: 1.4; background: #3D4632; padding: 8px 13px; border-radius: 4px 14px 14px 14px">Perfect, and the rest of the days for the city!</div>
+            </div>
+          </div>
+          <div style="margin-top: auto; display: flex; gap: 10px">
+            <label for="webonlymsg" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Message the group</label>
+            <input id="webonlymsg" type="text" placeholder="Message the group…" style="pointer-events: auto; flex-grow: 1; height: 44px; box-sizing: border-box; padding: 0 16px; border-radius: 12px; border: 1px solid #5D6851; background: #3D4632; color: #FBF3DA; font-family: inherit; font-size: 15px">
+            <button type="button" aria-label="Send" style="pointer-events: auto; width: 44px; height: 44px; border-radius: 12px; border: none; background: #E2CBA8; color: #3D4632; display: flex; align-items: center; justify-content: center; cursor: pointer">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10h13M11 5l5 5-5 5"></path></svg>
+            </button>
+          </div>
+      </div>
+    </section>
+    <aside style="width: 360px; flex-shrink: 0; display: flex; flex-direction: column; gap: 16px">
+      <div style="padding: 18px 20px; border-radius: 20px; background: #4A5440; border: 1px solid #5D6851; display: flex; flex-direction: column; gap: 12px">
+        <div style="font-size: 12px; color: #DFCBAA; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700">Vote: Jaipur ⇄ Mumbai</div>
+        <div style="padding: 14px; border-radius: 14px; background: #3D4632; display: flex; flex-direction: column; gap: 6px">
+          <div style="font-size: 16px; font-weight: 700">Option 1 · Overnight train</div>
+          <div style="font-size: 13px; color: #CBCDB8; line-height: 1.4">Leaves the night of 11 Oct, back after 17 Oct · [₹ PRICE] per person, round trip</div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px">
+            <div style="font-size: 13px; color: #EAD9BF">4 votes</div>
+            <button type="button" style="pointer-events: auto; height: 36px; padding: 0 16px; border-radius: 10px; border: none; background: #E2CBA8; color: #3D4632; font-family: inherit; font-weight: 700; font-size: 14px; cursor: pointer">Vote</button>
+          </div>
+        </div>
+        <div style="padding: 14px; border-radius: 14px; background: #3D4632; display: flex; flex-direction: column; gap: 6px">
+          <div style="font-size: 16px; font-weight: 700">Option 2 · Flight</div>
+          <div style="font-size: 13px; color: #CBCDB8; line-height: 1.4">Morning of 12 Oct, back the evening of 17 Oct · [₹ PRICE] per person, round trip</div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px">
+            <div style="font-size: 13px; color: #EAD9BF">2 votes</div>
+            <button type="button" style="pointer-events: auto; height: 36px; padding: 0 16px; border-radius: 10px; border: 1px solid #E2CBA8; background: transparent; color: #E2CBA8; font-family: inherit; font-weight: 700; font-size: 14px; cursor: pointer">Vote</button>
+          </div>
+        </div>
+      </div>
+      <div style="padding: 18px 20px; border-radius: 20px; background: #4A5440; border: 1px solid #5D6851; display: flex; flex-direction: column; gap: 10px">
+        <div style="font-size: 12px; color: #DFCBAA; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700">Invite your group</div>
+        <div style="font-size: 14px; color: #CBCDB8; line-height: 1.4">Friends join with just a phone number. No app, no password.</div>
+        <div style="display: flex; gap: 8px">
+          <div style="flex-grow: 1; height: 40px; border-radius: 10px; background: #3D4632; border: 1px dashed #DFCBAA; display: flex; align-items: center; padding: 0 12px; font-size: 14px; color: #EAD9BF">[invite link]</div>
+          <button type="button" style="pointer-events: auto; height: 40px; padding: 0 14px; border-radius: 10px; border: none; background: #EAD9BF; color: #3D4632; font-family: inherit; font-weight: 700; font-size: 14px; cursor: pointer">Copy</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: center">
+    <a href="#People" style="pointer-events: auto; font-size: 15px; color: #CBCDB8; text-decoration: none">← Back</a>
+    <div style="display: flex; align-items: center; gap: 10px; font-size: 15px; color: #EAD9BF; font-weight: 500"><span style="display: block; width: 8px; height: 8px; border-radius: 50%; background: #F08A7E; box-shadow: 0 0 0 5px rgba(240,138,126,0.25)"></span>Click anywhere to start again →</div>
+  </div>
+  </div>
+</div>
+</section>
+</div></div>
+<script>
+(function(){
+  var ids=['Main','Role','TripType','People','Dual','Web'];
+  function show(){
+    var id=(location.hash||'#Main').slice(1);
+    if(ids.indexOf(id)<0) id='Main';
+    document.querySelectorAll('.screen').forEach(function(s){s.classList.toggle('active',s.id===id);});
+    window.scrollTo(0,0);
+  }
+  function fit(){
+    var v=document.getElementById('viewport');
+    var s=Math.min(v.clientWidth/1280,v.clientHeight/800)*0.97;
+    document.getElementById('stage').style.transform='translate(-50%,-50%) scale('+s+')';
+  }
+  document.querySelectorAll('.num').forEach(function(b){
+    b.addEventListener('click',function(e){
+      e.stopPropagation();
+      document.querySelectorAll('.num').forEach(function(x){x.setAttribute('aria-pressed','false');});
+      b.setAttribute('aria-pressed','true');
+      var n=+b.dataset.n;
+      document.getElementById('ppl-summary').textContent = n===1 ? 'Just you' : n+' travellers';
+    });
+  });
+  window.addEventListener('hashchange',show);
+  window.addEventListener('resize',fit);
+  show(); fit();
+})();
+</script>
+</body>
+</html>
